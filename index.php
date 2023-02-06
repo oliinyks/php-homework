@@ -9,21 +9,26 @@
 </head>
 <body>
 	<div class="container">
-		<div class="">
-			<nav>
-				<ul>
-					<li>
+		<header>
+			<nav class="menu">
+				<ul class="menu-items">
+					<li class="menu-item btn-primary">
 						<a href="login.php">Login</a>
 					</li>
-					<li>
+					<li class="menu-item btn-primary">
 						<a href="register.php">Register</a>
 					</li>
 				</ul>
 			</nav>
-		</div>
-		<div class="section">
-			<h1 class="main-title">Posts</h1>
-		</div>
+		</header>
+		<main>
+			<div class="section">
+				<h1 class="main-title">Posts</h1>
+			</div>
+		</main>
+		<footer>
+
+		</footer>
 	</div>
 </body>
 </html>
