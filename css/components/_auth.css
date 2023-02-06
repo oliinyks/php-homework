@@ -1,0 +1,29 @@
+.back{
+	margin-top: 20px;
+	width: 70px;
+}
+.auth-section{
+display: grid;
+place-items: center;
+}
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+}
+.form-control {
+  display: block;
+  width: 230px;
+  margin-bottom: 30px;
+  border: 1px solid var(--btn);
+  border-radius: 20px;
+  padding: 10px 15px;
+}
+@media (min-width: 700px) {
+  .form-control {
+    width: 400px;
+	 height: 40px;
+  }
+}
+.link{
+	color: var(--accent);
+}
