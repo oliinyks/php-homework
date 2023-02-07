@@ -5,10 +5,13 @@ if (isset($_SESSION["user_id"])) {
   $mysqli = require __DIR__ . "/database.php";
 
   $sql = "SELECT * FROM user WHERE id = {$_SESSION["user_id"]}";
+  $result = $mysqli->query($sql);
+  $user = $result->fetch_assoc();
 
-	$result = $mysqli->query($sql);
+//    $sql = "SELECT * FROM post WHERE id = {$_SESSION["user_id"]}";
+//   $result = $mysqli->query($sql);
+//   $user = $result->fetch_assoc();
 
-	$user = $result->fetch_assoc();
 }
 ?>
 
@@ -29,15 +32,14 @@ if (isset($_SESSION["user_id"])) {
 
 					<?php if (isset($user)): ?>
 						<li class="menu-user">Hello, <?= htmlspecialchars($user["name"]) ?></li>
-						<li class="menu-item btn-primary"><a href="logout.php">Log out</a></li>
+						<li class="menu-user"><a class="btn-primary" href="create-post.php">New post</a></li>
+						<li><a class="menu-item btn-primary" href="logout.php">Log out</a></li>
 
 						<?php else: ?>
 							
-					<li class="menu-item btn-primary">
-						<a href="login.php">Login</a>
+					<li><a class="menu-item btn-primary" href="login.php">Login</a>
 					</li>
-					<li class="menu-item btn-primary">
-						<a href="register.php">Register</a>
+					<li><a class="menu-item btn-primary" href="register.php">Register</a>
 					</li>
 
 					<?php endif; ?>
@@ -50,16 +52,6 @@ if (isset($_SESSION["user_id"])) {
 				<h1 class="main-title">Posts</h1>
 			</div>
 		</main>
-		<footer>
-
-		</footer>
 	</div>
 </body>
 </html>
-
-/*
-// asa@as.ass
-// sdsdererertrt
-aqwqww@wwewewewwe.ewe
-weweweweewew
-*/

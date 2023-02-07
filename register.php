@@ -57,9 +57,7 @@ if (isset($_POST["register_btn"])) {
 
 <body>
 	<div class="container">
-		<div class="btn-primary back">
-		<a href="index.php">Back</a>
-	</div>
+		<a class="btn-primary back" href="index.php">Back</a>
 		<div class="section auth-section">
 			<h1 class="main-title">Register</h1>
 			<form action="register.php" method="post">

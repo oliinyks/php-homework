@@ -41,9 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
 	<div class="container">
-		<div class="btn-primary back">
-			<a href="index.php">Back</a>
-		</div>
+			<a class="btn-primary back" href="index.php">Back</a>
 		<div class="section auth-section">
 			<h1 class="main-title">Login</h1>
 			<form method="post">

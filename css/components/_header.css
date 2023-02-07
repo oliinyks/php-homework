@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+.menu-user{
+	margin-left: 10px;
+}
+
 .menu-item{
 	width: 70px;
 	margin-left: 10px;

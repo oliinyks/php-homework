@@ -32,7 +32,3 @@ place-items: center;
 .link{
 	color: var(--accent);
 }
-
-.error{
-	color: var(--error);
-}

@@ -1,0 +1,20 @@
+.post-section {
+  display: grid;
+  place-items: center;
+}
+.form-textarea {
+  display: block;
+  width: 230px;
+  height: 250px;
+  margin-bottom: 30px;
+  border: 1px solid var(--btn);
+  border-radius: 20px;
+  padding: 10px 15px;
+  resize: none;
+}
+@media (min-width: 700px) {
+  .form-textarea {
+    width: 400px;
+	 height: 300px;
+  }
+}
