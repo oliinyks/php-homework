@@ -8,10 +8,9 @@ if (isset($_SESSION["user_id"])) {
   $result = $mysqli->query($sql);
   $user = $result->fetch_assoc();
 
-//    $sql = "SELECT * FROM post WHERE id = {$_SESSION["user_id"]}";
-//   $result = $mysqli->query($sql);
-//   $user = $result->fetch_assoc();
-
+  $sqlPost = "SELECT title, text, date, name FROM post ORDER BY date";
+  $resultPost = $mysqli->query($sqlPost);
+  $posts = $resultPost->fetch_all();
 }
 ?>
 
@@ -50,6 +49,20 @@ if (isset($_SESSION["user_id"])) {
 		<main>
 			<div class="section">
 				<h1 class="main-title">Posts</h1>
+				<div class='post-box'>
+
+							<?php foreach($posts as $post) { ?>
+								
+								<div class='post-item'>
+									<h2 class='post-title'><?= htmlspecialchars($post[0]) ?></h2>
+									<p class='post-info'><?= htmlspecialchars($post[3]) ?> | <?= htmlspecialchars($post[2]) ?></p>
+									<p class='post-text'><?= htmlspecialchars($post[1]) ?></p>
+									<a class='post-link' href="#">More info</a>
+								</div>
+
+							<?php }?>
+
+				</div>
 			</div>
 		</main>
 	</div>
