@@ -1,62 +1,49 @@
 <?php
-require_once './connection.php';
 
-session_start();
+if (isset($_POST["register_btn"])) {
+  $name = $_POST["name"];
+  $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+  $password = strip_tags($_POST["password"]);
 
-if(isset($_SESSION['user'])){
-	header('location: index.php');
-}
+  if (empty($name)) {
+    $errorMsg[0][] = "Name is required";
+  }
 
-if(isset($_REQUEST['register_btn'])){
-	$name = filter_var($_REQUEST['name'], FILTER_SANITIZE_STRING);
-	$email = filter_var($_REQUEST['email'], FILTER_SANITIZE_EMAIL);
-	$password = strip_tags($_REQUEST['password']);
+  if (empty($email)) {
+    $errorMsg[1][] = "Email is required";
+  }
 
-	if(empty($name)){
-		$errorMsg[0][] = 'Name is required';
-	}
-	
-	if(empty($email)){
-		$errorMsg[1][] = 'Email is required';
-	}
-	
-	if(strlen($password) < 6){
-			$errorMsg[2][] = 'Password must be at least 6 characters';
-		}
-	
-	if(empty($errorMsg)){
-		try{
-			$select_stmt = $db->prepare("SELECT name,emeil FROM users WHERE emeil = :emeil");
-			$select_stmt->execute(['email' => $email]);
-			$row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+  if (strlen($password) < 6) {
+    $errorMsg[2][] = "Password must be at least 6 characters";
+  }
 
-			if(isset($row['email']) === $email){
-				$errorMsg[1][] = "Email address already exists, please choose another or login instead";
-			}else{
-				$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-				$created = new DateTime();
-				$created = $created->format('Y-m-d H:i:s');
+  if (empty($errorMsg)) {
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $mysqli = require __DIR__ . "/database.php";
 
-				$insert_stmt = $db->prepare("INSERT INTO users (name,email,password,created) VALUES(:name,:email,:password,:created)");
-			
-			if($insert_stmt->execute([
-				':name' => $name,
-				':email' => $email,
-				':password' => $hashed_password,
-				':created' => $created,
-			])) {
-				header('location: index.php');
-			}
-			}
-		}
-		catch(PDOException $e){
-			$pdoError = $e->getMessage();
-		}
-	}
-}
+    $sql = "INSERT INTO user (name, email, password_hash) VALUES (?, ?, ?)";
 
+    $stmt = $mysqli->stmt_init();
 
-?>
+    if (!$stmt->prepare($sql)) {
+      die("SQL error: " . $mysqli->error);
+    }
+
+    $stmt->bind_param("sss", $name, $email, $hashed_password);
+
+    if ($stmt->execute()) {
+      header("Location: login.php");
+      exit();
+
+    } else {
+      if ($mysqli->errno === 1062) {
+        $errorMsg[1][] = "Email is already taken";
+      } else {
+        die($mysqli->error . " " . $mysqli->errno);
+      }
+    }
+  }
+} ?>
 
 <html lang="en">
 
@@ -78,35 +65,29 @@ if(isset($_REQUEST['register_btn'])){
 			<form action="register.php" method="post">
 				<label for="name" class="form-label">Name</label>
 
-				<?php
-				if(isset($errorMsg[0])){
-					foreach($errorMsg[0] as $nameError){
-						echo " <p class='error'>".$nameError."</p>";
-					}
-				}
-				?>
+				<?php if (isset($errorMsg[0])) {
+      foreach ($errorMsg[0] as $nameError) {
+        echo " <p class='error'>" . $nameError . "</p>";
+      }
+    } ?>
 
-					<input type="text" name="name" class="form-control" placeholder="Jane Doe">
+					<input type="text" name="name" class="form-control" placeholder="Jane Doe"  value="<?= htmlspecialchars($name ?? '') ?>">
 					<label for="email" class="form-label">Email address</label>
 
-						<?php
-				if(isset($errorMsg[1])){
-					foreach($errorMsg[1] as $emailError){
-						echo " <p class='error'>".$emailError."</p>";
-					}
-				}
-				?>
+						<?php if (isset($errorMsg[1])) {
+        foreach ($errorMsg[1] as $emailError) {
+          echo " <p class='error'>" . $emailError . "</p>";
+        }
+      } ?>
 
-					<input type="email" name="email" class="form-control" placeholder="jane@doe.com">
+					<input type="email" name="email" class="form-control" placeholder="jane@doe.com"  value="<?= htmlspecialchars($email ?? '') ?>">
 					<label for="password" class="form-label">Password</label>
 
-						<?php
-				if(isset($errorMsg[2])){
-					foreach($errorMsg[2] as $passwordError){
-						echo " <p class='error'>".$passwordError."</p>";
-					}
-				}
-				?>
+						<?php if (isset($errorMsg[2])) {
+        foreach ($errorMsg[2] as $passwordError) {
+          echo " <p class='error'>" . $passwordError . "</p>";
+        }
+      } ?>
 
 					<input type="password" name="password" class="form-control" placeholder="">
 					

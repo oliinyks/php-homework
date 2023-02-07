@@ -6,13 +6,11 @@
 .menu-items {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .menu-item{
 	width: 70px;
-}
-
-.menu-item + .menu-item {
-  margin-left: 10px;
+	margin-left: 10px;
 }
 
