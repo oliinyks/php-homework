@@ -15,7 +15,7 @@ if (isset($_SESSION["user_id"])) {
     }
 
     if (empty($errorMsg)) {
-      $mysqli = require __DIR__ . "/database.php";
+      $mysqli = require "../database.php";
 
       $date = new DateTime();
       $date = $date->format("Y-m-d H:i:s");
@@ -37,7 +37,7 @@ if (isset($_SESSION["user_id"])) {
       $stmt->bind_param("ssss", $title, $text, $date, $name);
 
       if ($stmt->execute()) {
-        header("Location: index.php");
+        header("Location: http://localhost/php-homework/src/index.php");
         exit();
       }
 		else {
@@ -46,7 +46,7 @@ if (isset($_SESSION["user_id"])) {
     }
   }
 } else {
-  header("Location: index.php");
+  header("Location: http://localhost/php-homework/src/index.php");
   exit();
 }
 ?>
@@ -57,12 +57,12 @@ if (isset($_SESSION["user_id"])) {
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./css/index.css">
+	<link rel="stylesheet" href="../css/index.css">
 	<title>Home</title>
 </head>
 <body>
 	<div class="container">
-		<a class="btn-primary back" href="index.php">Back</a>
+		<a class="btn-primary back" href="http://localhost/php-homework/src/index.php">Back</a>
 		<div class="section post-section">
 			<h1 class="main-title">Create a new post</h1>
 			<form method="post">

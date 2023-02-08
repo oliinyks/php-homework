@@ -19,7 +19,7 @@ if (isset($_POST["register_btn"])) {
 
   if (empty($errorMsg)) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $mysqli = require __DIR__ . "/database.php";
+    $mysqli = require "../database.php";
 
     $sql = "INSERT INTO user (name, email, password_hash) VALUES (?, ?, ?)";
 
@@ -50,13 +50,13 @@ if (isset($_POST["register_btn"])) {
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./css/index.css">
+	<link rel="stylesheet" href="../css/index.css">
 	<title>Register</title>
 </head>
 
 <body>
 	<div class="container">
-		<a class="btn-primary back" href="index.php">Back</a>
+		<a class="btn-primary back" href="http://localhost/php-homework/src/index.php">Back</a>
 		<div class="section auth-section">
 			<h1 class="main-title">Register</h1>
 			<form action="register.php" method="post">
