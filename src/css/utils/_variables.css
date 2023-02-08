@@ -1,0 +1,13 @@
+:root {
+  --background: rgba(20, 28, 36, 1);
+  --secondary-background: rgba(49, 71, 92, 0.821);
+
+  --primary-text: rgba(255, 255, 255, 1);
+  --secondary-text: rgb(208, 208, 208);
+
+  --accent: rgba(0, 197, 255, 1);
+  --btn:rgba(0, 0, 0, 1);
+
+  --error: rgb(224, 14, 14);
+}
+

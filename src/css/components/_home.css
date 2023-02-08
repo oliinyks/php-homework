@@ -1,0 +1,25 @@
+.post-item {
+  margin-bottom: 20px;
+  border: 1px solid var(--secondary-background);
+  border-radius: 20px;
+  padding: 15px;
+  background-color: var(--secondary-background);
+}
+.post-title {
+  font-size: 14px;
+}
+.post-info {
+  font-size: 10px;
+}
+.post-text {
+  color: var(--secondary-text);
+}
+.post-link,
+.post-edit {
+  font-style: italic;
+  text-decoration: underline;
+}
+.post-edit {
+  display: block;
+  text-align: right;
+}
