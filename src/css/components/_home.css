@@ -23,3 +23,11 @@
   display: block;
   text-align: right;
 }
+.post-pos {
+  display: grid;
+  place-items: center;
+}
+.box {
+  display: grid;
+  place-items: center;
+}

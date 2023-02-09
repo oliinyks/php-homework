@@ -50,12 +50,12 @@ if (isset($_POST["post_btn"])) {
 
 	<main>
 		<div class="container">
-			<div class="section">
+			<div class="section post-section">
 				<div class='post-box'>
 
 					<?php foreach ($onePost as $post) { ?>
 
-					<form method="post" class='post-item'>
+					<form method="post" class='post-item box'>
 						<?php if (isset($errorMsg[0])) {
         foreach ($errorMsg[0] as $titleError) {
           echo " <p class='error'>" . $titleError . "</p>";
