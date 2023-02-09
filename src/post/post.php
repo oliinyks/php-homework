@@ -21,7 +21,7 @@ $onePost = $result->fetch_all();
 	<div class="container">
 		<main>
 			<div class="section">
-				<a class="btn-primary back" href="http://localhost/php-homework/src/index.php">Back</a>
+				<a class="btn-primary back" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/index.php') ?>">Back</a>
 				<div class='post-box'>
 
 						<?php foreach ($onePost as $post) { ?>

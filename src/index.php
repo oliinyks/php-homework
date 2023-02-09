@@ -33,14 +33,14 @@ if (isset($_SESSION["user_id"])) {
 
 					<?php if (isset($user)): ?>
 						<li class="menu-user">Hello, <?= htmlspecialchars($user["name"]) ?></li>
-						<li class="menu-user"><a class="btn-primary" href="http://localhost/php-homework/src/post/create-post.php">New post</a></li>
-						<li><a class="menu-item btn-primary" href="http://localhost/php-homework/src/auth/logout.php">Log out</a></li>
+						<li class="menu-user"><a class="btn-primary" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/post/create-post.php') ?>">New post</a></li>
+						<li><a class="menu-item btn-primary" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/auth/logout.php') ?>">Log out</a></li>
 
 						<?php else: ?>
 							
-					<li><a class="menu-item btn-primary" href="http://localhost/php-homework/src/auth/login.php">Login</a>
+					<li><a class="menu-item btn-primary" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/auth/login.php') ?>">Login</a>
 					</li>
-					<li><a class="menu-item btn-primary" href="http://localhost/php-homework/src/auth/register.php">Register</a>
+					<li><a class="menu-item btn-primary" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/auth/register.php') ?>">Register</a>
 					</li>
 
 					<?php endif; ?>
@@ -57,7 +57,7 @@ if (isset($_SESSION["user_id"])) {
 								<div class='post-item'>
 									<?php
 									if($user["name"] === $post[4]){
-										echo '<a class="post-edit" href="http://localhost/php-homework/src/post/post-edit.php/index?id='.$post[0].'">edit</a>';
+										echo '<a class="post-edit" href="http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/post/post-edit.php/index?id='.$post[0].'">edit</a>';
 									}
 									?>
 
@@ -72,7 +72,7 @@ if (isset($_SESSION["user_id"])) {
 											$endPoint = strrpos($stringCut, ' ');
 
 											$string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
-											$string .= '... <a class="post-link" href="http://localhost/php-homework/src/post/post.php/index?id='.$post[0].'">Read More</a>';
+											$string .= '... <a class="post-link" href="http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/post/post.php/index?id='.$post[0].'">Read More</a>';
 										}
 										echo $string;
 										?>

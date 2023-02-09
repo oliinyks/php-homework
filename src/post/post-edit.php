@@ -35,7 +35,7 @@ if (isset($_POST["post_btn"])) {
     $sql = "UPDATE post SET title = '$postTitle', text = '$postText', date = '$postTime' WHERE id = '$postId'";
 
     if ($mysqli->query($sql)) {
-      header("Location: http://localhost/php-homework/src/index.php");
+      header("Location: http://".$_SERVER["SERVER_NAME"]."/php-homework/src/index.php");
       exit();
     }
   }
@@ -55,7 +55,7 @@ if (isset($_POST["post_btn"])) {
 <body>
 	<main>
 			<div class="container">
-				<a class="btn-primary back" href="http://localhost/php-homework/src/index.php">Back</a>
+				<a class="btn-primary back" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/index.php') ?>">Back</a>
 			<div class="section">
 				<div class='post-box'>
 

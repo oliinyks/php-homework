@@ -2,5 +2,5 @@
 session_start();
 session_destroy();
 
-header("Location: http://localhost/php-homework/src/index.php");
+header("Location: http://".$_SERVER["SERVER_NAME"]."/php-homework/src/index.php");
 exit;

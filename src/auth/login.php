@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       $_SESSION["user_id"] = $user["id"];
 
-      header("Location: http://localhost/php-homework/src/index.php");
+      header("Location: http://".$_SERVER["SERVER_NAME"]."/php-homework/src/index.php");
       exit();
     }
   }
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
 	<div class="container">
-			<a class="btn-primary back" href="http://localhost/php-homework/src/index.php">Back</a>
+			<a class="btn-primary back" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/index.php') ?>">Back</a>
 		<div class="section auth-section">
 			<h1 class="main-title">Login</h1>
 			<form method="post">

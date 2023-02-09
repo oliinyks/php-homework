@@ -56,7 +56,7 @@ if (isset($_POST["register_btn"])) {
 
 <body>
 	<div class="container">
-		<a class="btn-primary back" href="http://localhost/php-homework/src/index.php">Back</a>
+		<a class="btn-primary back" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/index.php') ?>">Back</a>
 		<div class="section auth-section">
 			<h1 class="main-title">Register</h1>
 			<form action="register.php" method="post">

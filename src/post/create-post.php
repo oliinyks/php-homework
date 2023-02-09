@@ -37,7 +37,7 @@ if (isset($_SESSION["user_id"])) {
       $stmt->bind_param("ssss", $title, $text, $date, $name);
 
       if ($stmt->execute()) {
-        header("Location: http://localhost/php-homework/src/index.php");
+        header("Location: http://".$_SERVER["SERVER_NAME"]."/php-homework/src/index.php");
         exit();
       }
 		else {
@@ -46,7 +46,7 @@ if (isset($_SESSION["user_id"])) {
     }
   }
 } else {
-  header("Location: http://localhost/php-homework/src/index.php");
+  header("Location: http://".$_SERVER["SERVER_NAME"]."/php-homework/src/index.php");
   exit();
 }
 ?>
@@ -62,7 +62,7 @@ if (isset($_SESSION["user_id"])) {
 </head>
 <body>
 	<div class="container">
-		<a class="btn-primary back" href="http://localhost/php-homework/src/index.php">Back</a>
+		<a class="btn-primary back" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/index.php') ?>">Back</a>
 		<div class="section post-section">
 			<h1 class="main-title">Create a new post</h1>
 			<form method="post">
