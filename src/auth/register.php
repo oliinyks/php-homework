@@ -56,7 +56,11 @@ if (isset($_POST["register_btn"])) {
 
 <body>
 	<div class="container">
-		<a class="btn-primary back" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/index.php') ?>">Back</a>
+
+		<a class="btn-primary back" href="<?= htmlspecialchars(
+    "http://" . $_SERVER["SERVER_NAME"] . "/php-homework/src/index.php"
+  ) ?>">Back</a>
+
 		<div class="section auth-section">
 			<h1 class="main-title">Register</h1>
 			<form action="register.php" method="post">
@@ -68,30 +72,30 @@ if (isset($_POST["register_btn"])) {
       }
     } ?>
 
-					<input type="text" name="name" class="form-control" placeholder="Jane Doe"  value="<?= htmlspecialchars(
+				<input type="text" name="name" class="form-control" placeholder="Jane Doe" value="<?= htmlspecialchars(
        $name ?? ""
      ) ?>">
-					<label for="email" class="form-label">Email address</label>
+				<label for="email" class="form-label">Email address</label>
 
-						<?php if (isset($errorMsg[1])) {
+				<?php if (isset($errorMsg[1])) {
         foreach ($errorMsg[1] as $emailError) {
           echo " <p class='error'>" . $emailError . "</p>";
         }
       } ?>
 
-					<input type="email" name="email" class="form-control" placeholder="jane@doe.com"  value="<?= htmlspecialchars(
+				<input type="email" name="email" class="form-control" placeholder="jane@doe.com" value="<?= htmlspecialchars(
        $email ?? ""
      ) ?>">
-					<label for="password" class="form-label">Password</label>
+				<label for="password" class="form-label">Password</label>
 
-						<?php if (isset($errorMsg[2])) {
+				<?php if (isset($errorMsg[2])) {
         foreach ($errorMsg[2] as $passwordError) {
           echo " <p class='error'>" . $passwordError . "</p>";
         }
       } ?>
 
-					<input type="password" name="password" class="form-control" placeholder="">
-					
+				<input type="password" name="password" class="form-control" placeholder="">
+
 				<button type="submit" name="register_btn" class="btn btn-primary">Register Account</button>
 			</form>
 			Already Have an Account? <a class="link" href="login.php">Login Instead</a>

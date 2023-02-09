@@ -21,7 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       $_SESSION["user_id"] = $user["id"];
 
-      header("Location: http://".$_SERVER["SERVER_NAME"]."/php-homework/src/index.php");
+      header(
+        "Location: http://" .
+          $_SERVER["SERVER_NAME"] .
+          "/php-homework/src/index.php"
+      );
       exit();
     }
   }
@@ -39,9 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	<link rel="stylesheet" href="../css/index.css">
 	<title>Login</title>
 </head>
+
 <body>
 	<div class="container">
-			<a class="btn-primary back" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/index.php') ?>">Back</a>
+
+		<a class="btn-primary back" href="<?= htmlspecialchars(
+    "http://" . $_SERVER["SERVER_NAME"] . "/php-homework/src/index.php"
+  ) ?>">Back</a>
+
 		<div class="section auth-section">
 			<h1 class="main-title">Login</h1>
 			<form method="post">
@@ -50,16 +59,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       echo " <p class='error'>Invalid email or password</p>";
     } ?>
 
-				 <label for="email" class="form-label">Email address</label>
-				 <input type="email" name="email" class="form-control" placeholder="jane@doe.com" value="<?= htmlspecialchars(
-       $_POST["email"] ?? ""
-     ) ?>">
-				 <label for="password" class="form-label">Password</label>
-				 <input type="password" name="password" class="form-control" placeholder="">
+				<label for="email" class="form-label">Email address</label>
+				<input type="email" name="email" class="form-control" placeholder="jane@doe.com" value="<?= htmlspecialchars(
+      $_POST["email"] ?? ""
+    ) ?>">
+				<label for="password" class="form-label">Password</label>
+				<input type="password" name="password" class="form-control" placeholder="">
 				<button type="submit" name="login_btn" class="btn btn-primary">Login</button>
 			</form>
-		 No Account? <a class="link" href="register.php">Register Instead</a>
+			No Account? <a class="link" href="register.php">Register Instead</a>
 		</div>
 	</div>
 </body>
+
 </html>

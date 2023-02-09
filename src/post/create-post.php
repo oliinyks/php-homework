@@ -25,8 +25,7 @@ if (isset($_SESSION["user_id"])) {
       $user = $result->fetch_assoc();
       $name = $user["name"];
 
-      $sql =
-        "INSERT INTO post (title, text, date, name) VALUES (?, ?, ?, ?)";
+      $sql = "INSERT INTO post (title, text, date, name) VALUES (?, ?, ?, ?)";
 
       $stmt = $mysqli->stmt_init();
 
@@ -37,16 +36,23 @@ if (isset($_SESSION["user_id"])) {
       $stmt->bind_param("ssss", $title, $text, $date, $name);
 
       if ($stmt->execute()) {
-        header("Location: http://".$_SERVER["SERVER_NAME"]."/php-homework/src/index.php");
+        header(
+          "Location: http://" .
+            $_SERVER["SERVER_NAME"] .
+            "/php-homework/src/index.php"
+        );
         exit();
-      }
-		else {
+      } else {
         die($mysqli->error . " " . $mysqli->errno);
       }
     }
   }
 } else {
-  header("Location: http://".$_SERVER["SERVER_NAME"]."/php-homework/src/index.php");
+  header(
+    "Location: http://" .
+      $_SERVER["SERVER_NAME"] .
+      "/php-homework/src/index.php"
+  );
   exit();
 }
 ?>
@@ -60,14 +66,19 @@ if (isset($_SESSION["user_id"])) {
 	<link rel="stylesheet" href="../css/index.css">
 	<title>Home</title>
 </head>
+
 <body>
 	<div class="container">
-		<a class="btn-primary back" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/index.php') ?>">Back</a>
+
+		<a class="btn-primary back" href="<?= htmlspecialchars(
+    "http://" . $_SERVER["SERVER_NAME"] . "/php-homework/src/index.php"
+  ) ?>">Back</a>
+
 		<div class="section post-section">
 			<h1 class="main-title">Create a new post</h1>
 			<form method="post">
 				<label for="name" class="form-label">Title</label>
-				
+
 				<?php if (isset($errorMsg[0])) {
       foreach ($errorMsg[0] as $titleError) {
         echo " <p class='error'>" . $titleError . "</p>";
@@ -77,18 +88,19 @@ if (isset($_SESSION["user_id"])) {
 				<input type="text" name="title" class="form-control" value="<?= htmlspecialchars(
       $title ?? ""
     ) ?>">
-			
-			<?php if (isset($errorMsg[1])) {
+
+				<?php if (isset($errorMsg[1])) {
      foreach ($errorMsg[1] as $postError) {
        echo " <p class='error'>" . $postError . "</p>";
      }
    } ?>
 
 				<textarea name="text" placeholder="Whats on your mind?" class="form-textarea"></textarea>
-	
+
 				<button type="submit" name="post_btn" class="btn btn-primary">Post</button>
 			</form>
 		</div>
 	</div>
 </body>
+
 </html>

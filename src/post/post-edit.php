@@ -35,7 +35,11 @@ if (isset($_POST["post_btn"])) {
     $sql = "UPDATE post SET title = '$postTitle', text = '$postText', date = '$postTime' WHERE id = '$postId'";
 
     if ($mysqli->query($sql)) {
-      header("Location: http://".$_SERVER["SERVER_NAME"]."/php-homework/src/index.php");
+      header(
+        "Location: http://" .
+          $_SERVER["SERVER_NAME"] .
+          "/php-homework/src/index.php"
+      );
       exit();
     }
   }
@@ -54,40 +58,45 @@ if (isset($_POST["post_btn"])) {
 
 <body>
 	<main>
-			<div class="container">
-				<a class="btn-primary back" href="<?= htmlspecialchars('http://' . $_SERVER["SERVER_NAME"] . '/php-homework/src/index.php') ?>">Back</a>
+		<div class="container">
+
+			<a class="btn-primary back" href="<?= htmlspecialchars(
+     "http://" . $_SERVER["SERVER_NAME"] . "/php-homework/src/index.php"
+   ) ?>">Back</a>
+
 			<div class="section">
 				<div class='post-box'>
 
-						<?php foreach ($onePost as $post) { ?>
+					<?php foreach ($onePost as $post) { ?>
 
-								<form method="post" class='post-item'>
-									<?php if (isset($errorMsg[0])) {
-           foreach ($errorMsg[0] as $titleError) {
-             echo " <p class='error'>" . $titleError . "</p>";
-           }
-         } ?>
+					<form method="post" class='post-item'>
+						<?php if (isset($errorMsg[0])) {
+        foreach ($errorMsg[0] as $titleError) {
+          echo " <p class='error'>" . $titleError . "</p>";
+        }
+      } ?>
 
-								<input type="text" name="title" class="form-control" value="<?= htmlspecialchars(
-          $post[0]
-        ) ?>">
-								
-										<?php if (isset($errorMsg[1])) {
-            foreach ($errorMsg[1] as $postError) {
-              echo " <p class='error'>" . $postError . "</p>";
-            }
-          } ?>
+						<input type="text" name="title" class="form-control" value="<?= htmlspecialchars(
+        $post[0]
+      ) ?>">
 
-									<textarea name="text" class="form-textarea"><?= htmlspecialchars(
-           $post[1]
-         ) ?></textarea>
-	
-				<button type="submit" name="post_btn" class="btn btn-primary">Post</button>
-								</form>
-							<?php } ?>
+						<?php if (isset($errorMsg[1])) {
+        foreach ($errorMsg[1] as $postError) {
+          echo " <p class='error'>" . $postError . "</p>";
+        }
+      } ?>
+
+						<textarea name="text" class="form-textarea"><?= htmlspecialchars(
+        $post[1]
+      ) ?></textarea>
+
+						<button type="submit" name="post_btn" class="btn btn-primary">Post</button>
+					</form>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
 	</main>
 </body>
+
 </html>
