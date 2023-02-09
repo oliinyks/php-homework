@@ -1,15 +1,11 @@
 <?php
-
-$host = "localhost";
-$dbname = "posts";
-$username = "root";
-$password = "M9@111KnCW_(Yt70";
+include "../_private/private_data.php";
 
 $mysqli = new mysqli(
-  hostname: $host,
-  username: $username,
-  password: $password,
-  database: $dbname
+  hostname: HOST,
+  username: USERNAME,
+  password: PASSWORD,
+  database: DBNAME
 );
 
 if ($mysqli->connect_errno) {

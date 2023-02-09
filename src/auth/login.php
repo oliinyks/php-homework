@@ -22,9 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $_SESSION["user_id"] = $user["id"];
 
       header(
-        "Location: http://" .
-          $_SERVER["SERVER_NAME"] .
-          "/php-homework/src/index.php"
+        "Location: http://" . $_SERVER["SERVER_NAME"] . "/php-homework/src/index.php"
       );
       exit();
     }
