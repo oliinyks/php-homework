@@ -1,4 +1,5 @@
 <?php
+include '../partials/header.php';
 
 if (isset($_POST["register_btn"])) {
   $name = $_POST["name"];
@@ -44,23 +45,9 @@ if (isset($_POST["register_btn"])) {
   }
 } ?>
 
-<html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../css/index.css">
-	<title>Register</title>
-</head>
-
-<body>
+<main>
 	<div class="container">
-
-		<a class="btn-primary back" href="<?= htmlspecialchars(
-    "http://" . $_SERVER["SERVER_NAME"] . "/php-homework/src/index.php"
-  ) ?>">Back</a>
-
 		<div class="section auth-section">
 			<h1 class="main-title">Register</h1>
 			<form action="register.php" method="post">
@@ -101,6 +88,6 @@ if (isset($_POST["register_btn"])) {
 			Already Have an Account? <a class="link" href="login.php">Login Instead</a>
 		</div>
 	</div>
-</body>
+</main>
 
-</html>
+<?php include '../partials/footer.php'; ?>

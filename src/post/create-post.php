@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include '../partials/header.php';
+
 if (isset($_SESSION["user_id"])) {
   if (isset($_POST["post_btn"])) {
     $title = $_POST["title"];
@@ -57,23 +59,9 @@ if (isset($_SESSION["user_id"])) {
 }
 ?>
 
-<html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../css/index.css">
-	<title>Home</title>
-</head>
-
-<body>
+<main>
 	<div class="container">
-
-		<a class="btn-primary back" href="<?= htmlspecialchars(
-    "http://" . $_SERVER["SERVER_NAME"] . "/php-homework/src/index.php"
-  ) ?>">Back</a>
-
 		<div class="section post-section">
 			<h1 class="main-title">Create a new post</h1>
 			<form method="post">
@@ -101,6 +89,6 @@ if (isset($_SESSION["user_id"])) {
 			</form>
 		</div>
 	</div>
-</body>
+</main>
 
-</html>
+<?php include '../partials/footer.php'; ?>

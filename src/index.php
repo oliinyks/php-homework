@@ -27,10 +27,10 @@ $posts = $resultPost->fetch_all();
 </head>
 
 <body>
-	<div class="container">
-		<header>
-			<nav class="menu">
-				<ul class="menu-items">
+	<header>
+			<div class="container">
+				<nav class="menu">
+					<ul class="menu-items">
 
 					<?php if (isset($user)): ?>
 
@@ -53,11 +53,13 @@ $posts = $resultPost->fetch_all();
 
 				</ul>
 			</nav>
+			</div>
 		</header>
 		<main>
-			<div class="section">
-				<h1 class="main-title">Posts</h1>
-				<div class='post-box'>
+			<div class="container">
+				<div class="section">
+					<h1 class="main-title">Posts</h1>
+						<div class='post-box'>
 
 					<?php foreach ($posts as $post) { ?>
 					<div class='post-item'>
@@ -90,8 +92,7 @@ $posts = $resultPost->fetch_all();
 
 				</div>
 			</div>
-		</main>
-	</div>
-</body>
+		</div>
+	</main>
 
-</html>
+<?php include './src/partials/footer.php'; ?>

@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include '../partials/header.php';
+
 $mysqli = require "../database.php";
 
 $sql = "SELECT title, text, date, name FROM post WHERE id = {$_GET["id"]}";
@@ -46,24 +48,8 @@ if (isset($_POST["post_btn"])) {
 }
 ?>
 
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../css/index.css">
-	<title>Post edit</title>
-</head>
-
-<body>
 	<main>
 		<div class="container">
-
-			<a class="btn-primary back" href="<?= htmlspecialchars(
-     "http://" . $_SERVER["SERVER_NAME"] . "/php-homework/src/index.php"
-   ) ?>">Back</a>
-
 			<div class="section">
 				<div class='post-box'>
 
@@ -97,6 +83,5 @@ if (isset($_POST["post_btn"])) {
 			</div>
 		</div>
 	</main>
-</body>
 
-</html>
+<?php include '../partials/footer.php'; ?>

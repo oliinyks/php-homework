@@ -1,4 +1,7 @@
 <?php
+
+include '../partials/header.php';
+
 $is_invalid = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -32,42 +35,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../css/index.css">
-	<title>Login</title>
-</head>
-
-<body>
-	<div class="container">
-
-		<a class="btn-primary back" href="<?= htmlspecialchars(
-    "http://" . $_SERVER["SERVER_NAME"] . "/php-homework/src/index.php"
-  ) ?>">Back</a>
-
-		<div class="section auth-section">
-			<h1 class="main-title">Login</h1>
-			<form method="post">
-
-				<?php if ($is_invalid) {
-      echo " <p class='error'>Invalid email or password</p>";
-    } ?>
-
-				<label for="email" class="form-label">Email address</label>
-				<input type="email" name="email" class="form-control" placeholder="jane@doe.com" value="<?= htmlspecialchars(
-      $_POST["email"] ?? ""
-    ) ?>">
-				<label for="password" class="form-label">Password</label>
-				<input type="password" name="password" class="form-control" placeholder="">
-				<button type="submit" name="login_btn" class="btn btn-primary">Login</button>
-			</form>
-			No Account? <a class="link" href="register.php">Register Instead</a>
+	<main>	
+		<div class="container">
+			<div class="section auth-section">
+				<h1 class="main-title">Login</h1>
+				<form method="post">
+	
+					<?php if ($is_invalid) {
+			echo " <p class='error'>Invalid email or password</p>";} ?>
+	
+					<label for="email" class="form-label">Email address</label>
+					<input type="email" name="email" class="form-control" placeholder="jane@doe.com" value="<?= htmlspecialchars(
+			$_POST["email"] ?? "") ?>">
+					<label for="password" class="form-label">Password</label>
+					<input type="password" name="password" class="form-control" placeholder="">
+					<button type="submit" name="login_btn" class="btn btn-primary">Login</button>
+				</form>
+				No Account? <a class="link" href="register.php">Register Instead</a>
+			</div>
 		</div>
-	</div>
-</body>
-
-</html>
+		</div>
+	</main>
+<?php include '../partials/footer.php'; ?>

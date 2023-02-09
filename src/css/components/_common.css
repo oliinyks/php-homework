@@ -31,23 +31,9 @@ body {
   color: var(--primary-text);
 }
 
-@media screen and (max-width: 767px) {
   main {
-    min-height: calc(100vh - 330px);
+    min-height: calc(100vh - 100px);
   }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  main {
-    min-height: calc(100vh - 296px);
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  main {
-    min-height: calc(100vh - 293px);
-  }
-}
 
 .section {
   width: 100%;

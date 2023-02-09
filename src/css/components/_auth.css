@@ -6,6 +6,7 @@
 .auth-section{
 display: grid;
 place-items: center;
+margin-bottom: 30px;
 }
 
 .form-label {
